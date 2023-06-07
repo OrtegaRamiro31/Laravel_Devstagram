@@ -39,9 +39,9 @@
                 <a href=""><img src="{{asset('uploads') . '/' . $post->imagen}}" alt="Imagen del post {{$post->titulo}}"></a>
             </div>            
             @endforeach
-            <div class="my-10 ">
-                {{$posts->links('pagination::tailwind')}}
-            </div>
+        </div>
+        <div class="my-10 ">
+            {{$posts->links('pagination::tailwind')}}
         </div>
         @else
             <p class="text-gray-600 uppercase text-sm text-center font-bold">No hay posts</p>
