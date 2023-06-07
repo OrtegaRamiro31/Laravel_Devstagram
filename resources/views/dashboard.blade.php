@@ -39,7 +39,7 @@
                 <a href=""><img src="{{asset('uploads') . '/' . $post->imagen}}" alt="Imagen del post {{$post->titulo}}"></a>
             </div>            
             @endforeach
-            <div>
+            <div class="my-10 ">
                 {{$posts->links('pagination::tailwind')}}
             </div>
         </div>
