@@ -39,12 +39,19 @@ class PostController extends Controller
         // ]);
 
         // Otra forma de crear registros
-        $post = new Post;
-        $post->titulo = $request->titulo;
-        $post->descripcion = $request->descripcion;
-        $post->imagen = $request->imagen;
-        $post->user_id = auth()->user()->id;
-        $post->save();
+        // $post = new Post;
+        // $post->titulo = $request->titulo;
+        // $post->descripcion = $request->descripcion;
+        // $post->imagen = $request->imagen;
+        // $post->user_id = auth()->user()->id;
+        // $post->save();
+
+        $request->user()->posts()->create([
+                'titulo' => $request->titulo,
+                'imagen' => $request->imagen,
+                'descripcion' => $request->descripcion,
+                'user_id' => auth()->user()->id
+        ]);
 
         return redirect()->route('posts.index', auth()->user()->username);
     }
