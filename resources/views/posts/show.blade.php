@@ -23,6 +23,10 @@
 
                 @auth  
                     <p class="text-xl font-bold text-center mb-4">Agrega un Nuevo Comentario</p>
+
+                    @if (session('mensaje'))
+                        <div class="bg-green-500 p-2 rounded-lg mb-6 text-white text-center uppercase font-bold">{{session('mensaje')}}</div>                        
+                    @endif
                     <form action="{{ route('comentarios.store', ['post' => $post, 'user' => $user] ) }}" method="POST">
                         @csrf
                         <div class="mb-5">
@@ -34,9 +38,7 @@
                                 name="comentario"
                                 placeholder="Agrega un Comentario"
                                 class="border p-3 w-full rounded-lg @error('name') border-red-500 @enderror"
-                            >
-                                {{old('comentario') }}
-                            </textarea>
+                            >{{old('comentario') }}</textarea>
                             @error('comentario')
                                 <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">{{$message}}</p>
                             @enderror
