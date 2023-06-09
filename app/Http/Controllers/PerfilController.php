@@ -42,6 +42,15 @@ class PerfilController extends Controller
         $usuario = User::find(auth()->user()->id);
         $usuario->username = $request->username;
         $usuario->imagen = $nombreImagen ?? auth()->user()->imagen ?? '';
+
+        // Eliminar imágen del servidor
+        if(auth()->user()->imagen){
+
+            unlink(public_path('perfiles') . '/' . auth()->user()->imagen);
+        } else {
+            dd('No hay una imágen existente');
+
+        }
         $usuario->save();
 
         // Redireccionar
