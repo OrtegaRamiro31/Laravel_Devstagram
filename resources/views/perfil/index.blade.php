@@ -37,7 +37,7 @@
                         class="border p-3 w-full rounded-lg @error('username') border-red-500 @enderror"
                         value="{{ auth()->user()->email }}"
                     />
-                    @error('username')
+                    @error('email')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">{{$message}}</p>
                     @enderror
                 </div>
@@ -54,6 +54,37 @@
                         accept=".jpg, .jpeg, .png"
                     />
                 </div>
+                <div class="mb-5">
+                    <label for="password" class="mb-2 block uppercase text-gray-500 font-bold">
+                        Nuevo Password
+                    </label>
+                    <input
+                        id="password"
+                        name="password"
+                        type="password"
+                        placeholder="Password"
+                        class="border p-3 w-full rounded-lg @error('name') border-red-500 @enderror"
+                    />
+                    @error('password')
+                        <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">{{$message}}</p>
+                    @enderror
+                </div>
+                <div class="mb-5">
+                    <label for="current_password" class="mb-2 block uppercase text-gray-500 font-bold">
+                        Password Actual
+                    </label>
+                    <input
+                        id="current_password"
+                        name="current_password"
+                        type="password"
+                        placeholder="Password Actual"
+                        class="border p-3 w-full rounded-lg @error('name') border-red-500 @enderror"
+                    />
+                    @error('current_password')
+                        <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">{{$message}}</p>
+                    @enderror
+                </div>
+
                 <input 
                     type="submit" 
                     value="Guardar Cambios" 
