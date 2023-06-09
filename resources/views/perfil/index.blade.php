@@ -19,7 +19,7 @@
                         type="text"
                         placeholder="Tu Nombre de Usuario"
                         class="border p-3 w-full rounded-lg @error('username') border-red-500 @enderror"
-                        value="{{old('auth()->user()->username') }}"
+                        value="{{ auth()->user()->username }}"
                     />
                     @error('username')
                         <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">{{$message}}</p>
