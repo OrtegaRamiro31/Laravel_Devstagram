@@ -25,14 +25,17 @@ Route::get('/', function () {
     return view('principal');
 });
 
-Route::get('/register', [RegisterController::class, 'index'])->name('register');
-Route::post('/register', [RegisterController::class, 'store']);
+// Perfil de usuario
+Route::get('/editar-perfil', [PerfilController::class, 'index'])->name('perfil.index');
+Route::post('/editar-perfil', [PerfilController::class, 'store'])->name('perfil.store');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'store']);
 Route::post('/logout', [LogoutController::class, 'store'])->name('logout');
 
-Route::get('/{user:username}', [PostController::class, 'index'])->name('posts.index');
+Route::get('/register', [RegisterController::class, 'index'])->name('register');
+Route::post('/register', [RegisterController::class, 'store']);
+
 Route::get('/posts/create',[PostController::class, 'create'])->name('posts.create');
 Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
 Route::get('/{user:username}/posts/{post:titulo}', [PostController::class, 'show'])->name('posts.show');
@@ -46,6 +49,4 @@ Route::post('imagenes', [ImagenController::class, 'store'])->name('imagenes.stor
 Route::post('/posts/{post}/likes', [LikeController::class, 'store'])->name('posts.likes.store');
 Route::delete('/posts/{post}/likes', [LikeController::class, 'destroy'])->name('posts.likes.destroy');
 
-// Perfil de usuario
-Route::get('{user:username}/editar-perfil', [PerfilController::class, 'index'])->name('perfil.index');
-Route::post('{user:username}/editar-perfil', [PerfilController::class, 'store'])->name('perfil.store');
+Route::get('/{user:username}', [PostController::class, 'index'])->name('posts.index');

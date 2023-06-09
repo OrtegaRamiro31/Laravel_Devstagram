@@ -11,6 +11,6 @@ class PerfilController extends Controller
         $this->middleware('auth');
     }
     public function index() {
-        dd('Perfil form');
+        return view('perfil.index');
     }
 }
