@@ -21,7 +21,5 @@
     @else
         <p class="text-center">No hay posts, sigue a alguien para ver posts</p>
     @endif
-    
-
 @endsection
 
