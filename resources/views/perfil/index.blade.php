@@ -26,6 +26,22 @@
                     @enderror
                 </div>
                 <div class="mb-5">
+                    <label for="email" class="mb-2 block uppercase text-gray-500 font-bold">
+                        Correo Electrónico
+                    </label>
+                    <input
+                        id="email"
+                        name="email"
+                        type="text"
+                        placeholder="Tu Nombre de Usuario"
+                        class="border p-3 w-full rounded-lg @error('username') border-red-500 @enderror"
+                        value="{{ auth()->user()->email }}"
+                    />
+                    @error('username')
+                        <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2 text-center">{{$message}}</p>
+                    @enderror
+                </div>
+                <div class="mb-5">
                     <label for="imagen" class="mb-2 block uppercase text-gray-500 font-bold">
                         Imágen Perfil
                     </label>

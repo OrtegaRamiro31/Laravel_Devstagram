@@ -21,6 +21,7 @@ class PerfilController extends Controller
 
         $this->validate($request, [
             'username' => ['required','unique:users,username,'.auth()->user()->id,'min:3','max:20','not_in:twitter,editar-perfil'],
+            'email' => ['required','unique:users,email,'.auth()->user()->email,'email','max:60'],
         ]);
 
         $nombreImagen = '';
@@ -37,20 +38,16 @@ class PerfilController extends Controller
             $imagenServidor->save($imagenPath);
         } 
 
-        // Guardar cambios
-
         $usuario = User::find(auth()->user()->id);
         $usuario->username = $request->username;
+        $usuario->email = $request->email;
         $usuario->imagen = $nombreImagen ?? auth()->user()->imagen ?? '';
 
         // Eliminar imágen del servidor
         if(auth()->user()->imagen){
-
             unlink(public_path('perfiles') . '/' . auth()->user()->imagen);
-        } else {
-            dd('No hay una imágen existente');
-
         }
+        // Guardar cambios
         $usuario->save();
 
         // Redireccionar
