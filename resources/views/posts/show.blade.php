@@ -39,7 +39,7 @@
         </div>
         <div class="md:w-1/2 p-5">
             <div class="shadown bg-white p-5 mb-5">
-
+{{-- 
                 @auth  
                     <p class="text-xl font-bold text-center mb-4">Agrega un Nuevo Comentario</p>
 
@@ -69,9 +69,9 @@
                             class="bg-sky-600 hover:bg-sky-700 transition-colors cursor-pointer uppercase font-bold w-full p-3 text-white rounded-lg"
                         />
                     </form>
-                @endauth
-
-                <div class="bg-white shadow mb-5 max-h-96 overflow-y-scroll mt-10">
+                @endauth --}}
+                <livewire:comment-post :post="$post" :user="$user" />
+                {{-- <div class="bg-white shadow mb-5 max-h-96 overflow-y-scroll mt-10">
                     @if ($post->comentarios)
 
                         @foreach ($post->comentarios()->orderBy('updated_at', 'DESC')->get() as $comentario)
@@ -84,7 +84,7 @@
                     @else
                         <p class="p-10 text-center">Aún no hay comentarios</p>
                     @endif                    
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
