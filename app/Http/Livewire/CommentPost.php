@@ -10,12 +10,13 @@ class CommentPost extends Component
     public $post;
     public $user;
     public $comentario;
+    public $comentarios;
     public $reactiveComments;
     
     public function mount($post, $user){
         $this->post = $post;
         $this->user = $user;
-        $this->reactiveComments =  $post->comentarios()->orderBy('updated_at', 'DESC')->get();
+        $this->comentarios = $post->comentarios()->orderBy('updated_at', 'DESC')->get();
     }
 
     public function comment(){
@@ -29,7 +30,8 @@ class CommentPost extends Component
             'comentario' => $this->comentario,
         ]);
 
-        $this->reactiveComments->push($newComment);
+        // $this->comentarios->push($newComment);
+        $this->comentarios->prepend($newComment);
     }
 
     public function render()
