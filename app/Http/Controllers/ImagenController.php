@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
@@ -21,5 +22,18 @@ class ImagenController extends Controller
         $imagenServidor->save($imagenPath);
         
         return response()->json(['imagen' => $nombreImagen]);
+    }
+
+    public function delete(){
+        $imagenes = glob(('uploads') . '/*');
+        $imagenesDB = Post::pluck('imagen')->toArray();
+
+        foreach($imagenes as $imagen){
+            if(!in_array(basename($imagen), $imagenesDB)){
+                unlink($imagen);
+            }
+        }
+
+        return response()->json(['msg' => 'Imágenes eliminadas correctamente']);
     }
 }

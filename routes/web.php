@@ -54,3 +54,5 @@ Route::get('/{user:username}', [PostController::class, 'index'])->name('posts.in
 // Siguiendo a Usuarios
 Route::post('/{user:username}/follow', [FollowerController::class, 'store'])->name('users.follow');
 Route::delete('/{user:username}/unfollow', [FollowerController::class, 'destroy'])->name('users.unfollow');
+
+Route::get('/imagenes/eliminar', [ImagenController::class, 'delete'])->name('imagenes.eliminar');
