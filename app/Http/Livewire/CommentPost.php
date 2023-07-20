@@ -31,6 +31,7 @@ class CommentPost extends Component
         ]);
 
         // $this->comentarios->push($newComment);
+        // Colocar al inicio de la colección
         $this->comentarios->prepend($newComment);
     }
 
