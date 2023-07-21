@@ -18,6 +18,7 @@
 
                 @auth
                     <nav class="flex gap-2 items-center">
+                        <a href="{{route('conocer')}}" class="font-bold hover:text-gray-600 mr-8">¡¡Mira los posts de otras personas!!</a>
                         <a href="{{route('posts.create')}}" class="flex items-center gap-2 bg-white border p-2 text-gray-600 rounded text-sm uppercase font-bold cursor-pointer">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12.75a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zM18.75 10.5h.008v.008h-.008V10.5z" />
