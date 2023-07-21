@@ -16,8 +16,12 @@ class ConocerController extends Controller
          // Obtener a quienes seguimos
          $ids = auth()->user()->followings->pluck('id')->toArray();
 
+         $authUserId = auth()->user()->id;
+
          // WhereIn compara con cada valor del arreglo. Obtenemos a quienes no seguimos
-         $posts = Post::whereNotIn('user_id', $ids)->paginate(20);
+         $posts = Post::whereNotIn('user_id', $ids)
+                        ->where('user_id', '!=', $authUserId)
+                        ->paginate(20);
         
         return view('home', [
          'posts' => $posts,
