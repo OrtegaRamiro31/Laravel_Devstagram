@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('titulo')
-    Página Principal
+    {{ $titulo }}
 @endsection
 
 @section('contenido')

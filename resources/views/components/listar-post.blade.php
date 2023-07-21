@@ -6,7 +6,16 @@
                 <a href="{{route('posts.show', ['post' => $post, 'user' => $post->user])}}">
                     <img src="{{asset('uploads') . '/' . $post->imagen}}" alt="Imagen del post {{$post->titulo}}"/>
                 </a>
-            </div>            
+                <div class="p-3">
+                @auth
+                    <div class="flex justify-around">
+                        <livewire:like-post :post="$post" />
+                        <p class="font-bold">{{$post->comentarios->count()}} <span class="font-normal">@choice('comentario|comentarios', $post->comentarios->count())</span></p>
+                    </div>
+                @endauth
+            </div>   
+                
+            </div>         
             @endforeach
         </div>
         <div class="my-10 ">

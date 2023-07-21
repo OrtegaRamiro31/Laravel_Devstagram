@@ -15,10 +15,12 @@ class HomeController extends Controller
     {
         // Obtener a quienes seguimos
         $ids = auth()->user()->followings->pluck('id')->toArray();
+        // WhereIn compara con cada valor del arreglo
         $posts = Post::whereIn('user_id', $ids)->latest()->paginate(20);
 
        return view('home', [
-        'posts' => $posts
+        'posts' => $posts,
+        'titulo' => 'Página principal',
        ]);   
     }
 }
